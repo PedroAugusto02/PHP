@@ -9,19 +9,25 @@
     </body>
 </html>
 
-<?php
-    $path = $_SERVER['DOCUMENT_ROOT'].'/ecommerce/';
-    include_once($path.'/Models/Usuario.php');
-    
+<?php 
+    $path = $_SERVER['DOCUMENT_ROOT'].'/ecommerce';
+    include_once($path."/Controllers/usuario_controller.php");
     if (isset($_POST['logar'])) {
-        $objUsuario = new Usuario();
-        $objUsuario -> setEmail($_POST['email']);
-        $objUsuario -> setSenha($_POST['senha']);
-        
-        $controllerUsuario = new UsuarioController();
-
-        $resposta = $controllerUsuario->login($objUsuario);
-        
-        echo $resposta;
+    
+    $objUsuario = new Usuario();
+  
+    $objUsuario->setEmail($_POST["email"]);
+    $objUsuario->setSenha($_POST["senha"]);
+    
+    $controllerUsuario = new UsuarioController();
+    $resposta = $controllerUsuario->cadastraUsuario(objUsuario);
+    
+    if ($resposta == "sucesso"){
+        header("Location: https://localhost/ecommerce/Views/inicio.php");
+    }else{
+    echo $resposta;
     }
+
+}
+
 ?>
