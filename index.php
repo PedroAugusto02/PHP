@@ -10,6 +10,7 @@
 </html>
 
 <?php 
+
     $path = $_SERVER['DOCUMENT_ROOT'].'/ecommerce';
     include_once($path."/Controllers/usuario_controller.php");
     if (isset($_POST['logar'])) {
@@ -20,7 +21,7 @@
     $objUsuario->setSenha($_POST["senha"]);
     
     $controllerUsuario = new UsuarioController();
-    $resposta = $controllerUsuario->cadastraUsuario(objUsuario);
+    $resposta = $controllerUsuario->cadastraUsuario($objUsuario);
     
     if ($resposta == "sucesso"){
         header("Location: https://localhost/ecommerce/Views/inicio.php");

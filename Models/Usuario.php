@@ -1,5 +1,6 @@
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'].'/ecommerce/';
+
 include_once($path.'/Conexao/usuario_controller.php');
 
 class Usuario{
